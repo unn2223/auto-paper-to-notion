@@ -3,8 +3,14 @@ import path from "node:path";
 
 export function parsePaperEntry(filePath) {
   const absolutePath = path.resolve(filePath);
-  const raw = fs.readFileSync(absolutePath, "utf8");
-  const data = JSON.parse(raw);
+  const raw = stripUtf8Bom(fs.readFileSync(absolutePath, "utf8"));
+
+  let data;
+  try {
+    data = JSON.parse(raw);
+  } catch (error) {
+    throw new Error(`Invalid JSON in ${absolutePath}: ${error.message}`);
+  }
 
   if (!data.title || typeof data.title !== "string") {
     throw new Error("Field `title` is required.");
@@ -96,4 +102,8 @@ function richText(content) {
       }
     }
   ];
+}
+
+function stripUtf8Bom(value) {
+  return value.startsWith("\uFEFF") ? value.slice(1) : value;
 }

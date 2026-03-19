@@ -104,3 +104,7 @@ JSON 파일명은 `papers/YYYYMMDD-short-title.json` 형식으로 만든다.
 4. 속성 타입 호환 여부
 
 실패 원인은 에러 메시지 그대로 간단히 설명한다.
+
+## Codex Sandbox Note
+
+If `node scripts/upload-paper.mjs <json-file-path>` fails with `fetch failed`, treat it as a likely sandbox/network restriction rather than a paper-data problem. In that case, immediately rerun the same command with escalated permissions so it can reach the Notion API.

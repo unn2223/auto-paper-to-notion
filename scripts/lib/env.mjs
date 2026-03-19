@@ -6,7 +6,7 @@ export function loadEnvFile(filePath) {
     return;
   }
 
-  const raw = fs.readFileSync(filePath, "utf8");
+  const raw = stripUtf8Bom(fs.readFileSync(filePath, "utf8"));
   for (const line of raw.split(/\r?\n/)) {
     const trimmed = line.trim();
     if (!trimmed || trimmed.startsWith("#")) {
@@ -56,4 +56,8 @@ function stripMatchingQuotes(value) {
   }
 
   return value;
+}
+
+function stripUtf8Bom(value) {
+  return value.startsWith("\uFEFF") ? value.slice(1) : value;
 }

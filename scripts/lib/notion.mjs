@@ -3,26 +3,32 @@ import { requireEnv } from "./env.mjs";
 export const NOTION_API_BASE_URL = "https://api.notion.com/v1";
 export const NOTION_VERSION = "2022-06-28";
 export const DEFAULT_PROPERTY_NAMES = {
-  title: "논문 제목",
-  authors: "저자",
-  journal: "저널명",
-  year: "출판연도",
-  summary: "주요내용 요약"
+  title: "\uB17C\uBB38 \uC81C\uBAA9",
+  authors: "\uC800\uC790",
+  journal: "\uC800\uB110\uBA85",
+  year: "\uCD9C\uD310\uC5F0\uB3C4",
+  summary: "\uC8FC\uC694\uB0B4\uC6A9 \uC694\uC57D"
 };
 
 export async function notionRequest(resourcePath, options = {}) {
   const token = requireEnv("NOTION_TOKEN");
   const method = options.method || "GET";
-  const response = await fetch(`${NOTION_API_BASE_URL}${resourcePath}`, {
-    method,
-    headers: {
-      "Authorization": `Bearer ${token}`,
-      "Content-Type": "application/json",
-      "Notion-Version": NOTION_VERSION,
-      ...(options.headers || {})
-    },
-    body: options.body ? JSON.stringify(options.body) : undefined
-  });
+
+  let response;
+  try {
+    response = await fetch(`${NOTION_API_BASE_URL}${resourcePath}`, {
+      method,
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/json",
+        "Notion-Version": NOTION_VERSION,
+        ...(options.headers || {})
+      },
+      body: options.body ? JSON.stringify(options.body) : undefined
+    });
+  } catch (error) {
+    throw new Error(describeNetworkError(resourcePath, error));
+  }
 
   if (!response.ok) {
     const errorText = await response.text();
@@ -148,4 +154,19 @@ function formatYearAsDate(value) {
     throw new Error(`Cannot convert value to year/date: ${value}`);
   }
   return `${year}-01-01`;
+}
+
+function describeNetworkError(resourcePath, error) {
+  const message = error instanceof Error ? error.message : String(error);
+
+  if (/fetch failed/i.test(message)) {
+    return [
+      `Failed to reach the Notion API at ${resourcePath}.`,
+      "This usually means the current environment blocked outbound network access or DNS/TLS failed.",
+      "If you are running inside Codex, rerun the same command outside the sandbox.",
+      `Original error: ${message}`
+    ].join(" ");
+  }
+
+  return `Failed to reach the Notion API at ${resourcePath}: ${message}`;
 }
