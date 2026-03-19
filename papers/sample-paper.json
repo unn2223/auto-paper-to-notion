@@ -1,0 +1,38 @@
+{
+  "title": "논문 제목",
+  "authors": [
+    "저자 1",
+    "저자 2"
+  ],
+  "journal": "저널명",
+  "year": 2024,
+  "one_sentence_summary": "이 논문은 핵심 결론을 한 문장으로 요약한다.",
+  "page_content": [
+    {
+      "heading": "연구 목적",
+      "paragraphs": [
+        "이 연구가 해결하려는 문제를 적습니다."
+      ]
+    },
+    {
+      "heading": "방법론",
+      "bullets": [
+        "사용한 접근 1",
+        "사용한 접근 2"
+      ]
+    },
+    {
+      "heading": "핵심 결과",
+      "bullets": [
+        "핵심 결과 1",
+        "핵심 결과 2"
+      ]
+    },
+    {
+      "heading": "한계",
+      "bullets": [
+        "한계 1"
+      ]
+    }
+  ]
+}

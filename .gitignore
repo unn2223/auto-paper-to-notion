@@ -1,0 +1,8 @@
+.env
+.env.local
+.env.*.local
+node_modules
+*.pdf
+*.PDF
+papers/*.json
+!papers/sample-paper.json

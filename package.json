@@ -1,0 +1,12 @@
+{
+  "name": "notion-paper-archive",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check-db": "node scripts/check-database.mjs",
+    "find-pdf": "node scripts/find-target-pdf.mjs",
+    "new-paper": "node scripts/new-paper.mjs",
+    "upload": "node scripts/upload-paper.mjs"
+  }
+}
