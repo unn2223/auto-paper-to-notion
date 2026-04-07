@@ -1,37 +1,94 @@
 {
-  "title": "논문 제목",
+  "title": "Sample Oxide TFT Paper",
   "authors": [
-    "저자 1",
-    "저자 2"
+    "Author One",
+    "Author Two"
   ],
-  "journal": "저널명",
+  "journal": "Sample Journal",
   "year": 2024,
-  "one_sentence_summary": "이 논문은 핵심 결론을 한 문장으로 요약한다.",
+  "one_sentence_summary": "이 논문은 dual-gate oxide TFT 구조로 Vth 안정성과 구동 성능 간 trade-off를 완화할 수 있음을 보인다.",
   "page_content": [
     {
-      "heading": "연구 목적",
-      "paragraphs": [
-        "이 연구가 해결하려는 문제를 적습니다."
+      "heading": "0. 기본 정보",
+      "bullets": [
+        "학회/연도: IEDM 2024",
+        "세션: oxide devices",
+        "저자/기관: Author One 외, Sample University",
+        "소자 종류: oxide TFT",
+        "핵심 키워드: IGZO, dual-gate, reliability"
       ]
     },
     {
-      "heading": "방법론",
+      "heading": "1. 문제 정의",
       "bullets": [
-        "사용한 접근 1",
-        "사용한 접근 2"
+        "핵심 문제: 고성능 oxide TFT에서 Vth 안정성과 mobility를 동시에 확보하기 어려움",
+        "기존 한계: contact resistance와 bias stress instability가 성능 저하를 유발함",
+        "왜 중요한가: display backplane 응용에서는 높은 구동 전류와 안정적 Vth가 동시에 필요함"
       ]
     },
     {
-      "heading": "핵심 결과",
+      "heading": "2. 제안 내용",
       "bullets": [
-        "핵심 결과 1",
-        "핵심 결과 2"
+        "핵심 아이디어: dual-gate 구조와 anneal 조건 최적화를 결합해 channel electrostatics를 개선함",
+        "분류(구조/재료/공정/측정/모델링): 구조 + 공정 변경",
+        "기존 대비 차이: single-gate baseline 대비 gate control과 stress 안정성을 함께 개선함"
       ]
     },
     {
-      "heading": "한계",
+      "heading": "3. 소자/공정 정보",
       "bullets": [
-        "한계 1"
+        "소자 구조: top/bottom gate를 결합한 dual-gate oxide transistor",
+        "채널 재료/두께: IGZO, 10 nm",
+        "gate dielectric: SiO2 / high-k stack",
+        "source/drain/contact: metal source/drain, contact engineering 일부 적용",
+        "공정 특징: 저온 공정 기반 증착 및 패터닝",
+        "anneal 조건: 250°C oxygen anneal",
+        "비고: self-aligned 여부는 논문 본문에서 명시적으로 확인되지 않음"
+      ]
+    },
+    {
+      "heading": "4. 핵심 결과",
+      "bullets": [
+        "주요 성능 지표: field-effect mobility가 VDS = 0.1 V 조건에서 25 cm²/V·s, SS 0.12 V/dec, Ion/Ioff 10^8",
+        "주요 신뢰성/메모리 지표: PBS 조건에서 ΔVth가 baseline 대비 감소함",
+        "측정 조건: room temperature, gate bias stress 10^4 s 조건 기준",
+        "baseline 대비 개선점: single-gate 대비 on-current 증가와 Vth shift 감소를 동시에 보임",
+        "저자 핵심 주장: dual-gate 설계가 성능과 안정성의 trade-off를 완화한다는 점을 주장함"
+      ]
+    },
+    {
+      "heading": "5. 근거와 증거 강도",
+      "bullets": [
+        "핵심 figure: Fig. 2, Fig. 4, Fig. 5",
+        "핵심 table: Table 1",
+        "사용된 근거: transfer curve, stress test, baseline 비교 데이터",
+        "직접 증거 / 간접 해석: 전기적 특성 데이터는 직접 증거, 일부 메커니즘 설명은 간접 해석",
+        "증거 강도 코멘트: 성능 데이터는 충분하지만 대규모 통계와 공정 통합성 검증은 제한적임"
+      ]
+    },
+    {
+      "heading": "6. 논문이 실제로 검증한 범위",
+      "bullets": [
+        "검증 수준: single-device validation + 일부 multi-device statistics",
+        "어디까지 보여줬는가: 개별 소자 특성과 stress 안정성까지 제시함",
+        "아직 비어 있는 부분: array-level demonstration과 full process integration은 제시되지 않음"
+      ]
+    },
+    {
+      "heading": "7. 저자가 인정한 한계",
+      "bullets": [
+        "limitation: 장기 신뢰성과 대면적 공정 검증은 제한적임",
+        "추가 검증 필요 부분: lifetime projection, array 구동, 공정 변동성 평가"
+      ]
+    },
+    {
+      "heading": "9. 해석/질문 노트",
+      "bullets": [
+        "내가 추가로 이해해야 할 개념: dual-gate 구조에서 threshold tuning 메커니즘",
+        "아직 헷갈리는 점: contact resistance 감소가 구조 영향인지 anneal 영향인지 분리 필요",
+        "비교할 다른 논문: oxide capping layer 기반 IGZO TFT 논문",
+        "지도교수/선배에게 물어볼 질문: backplane integration 관점에서 실제 공정 이점이 있는지",
+        "다음에 찾아볼 키워드: hydrogen-induced instability, BEOL thermal budget"
       ]
     }
   ]
